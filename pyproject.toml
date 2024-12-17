@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "filevault"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.4"
+django-rest-framework = "^0.1.0"
+psycopg2 = "^2.9.10"
+psycopg2-binary = "^2.9.10"
+python-magic = "^0.4.27"
+django-private-storage = "^3.1.1"
+python-decouple = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+django-types = "^0.20.0"
+django-stubs = "^5.1.1"
+debugpy = "^1.8.11"
+werkzeug = "^3.1.3"
+django-extensions = "^3.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+typeCheckingMode = "basic"
+
+# Suppress specific diagnostics globally
+[tool.pyright.diagnosticSeverityOverrides]
+reportIncompatibleVariableOverride = "none"

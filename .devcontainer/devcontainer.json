@@ -1,0 +1,22 @@
+{
+	"name": "filevault",
+	"dockerComposeFile": [
+		"../.docker/docker-compose.local.yaml"
+	],
+	"service": "filevault-api",
+	"workspaceFolder": "/home/docker/workspace",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
+			"version": "nightly"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"charliermarsh.ruff"
+			]
+		}
+	}
+}

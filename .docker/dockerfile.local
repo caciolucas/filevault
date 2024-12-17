@@ -1,0 +1,21 @@
+
+FROM python:3.12
+
+ENV PYTHONUNBUFFERED 1
+
+RUN apt update && apt install gettext xclip ripgrep -y
+
+RUN useradd -ms /bin/bash docker
+
+WORKDIR /home/docker/workspace
+
+ENV PATH $PATH:/home/docker/.local/bin
+
+COPY poetry.lock pyproject.toml ./
+RUN pip install poetry==1.8.2
+
+USER docker
+RUN poetry install
+
+# Keep the container running 
+CMD ["tail", "-f", "/dev/null"]

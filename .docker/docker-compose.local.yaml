@@ -1,0 +1,28 @@
+name: filevault
+
+services:
+  filevault-api:
+    build:
+      context: ..
+      dockerfile: .docker/dockerfile.local
+    image: filevault:local
+    container_name: filevault-api
+    ports:
+      - ${API_FORWARD_PORT:-8000}:8000
+    volumes:
+      - ..:/home/docker/workspace
+    depends_on:
+      - filevault-db
+
+  filevault-db:
+    image: postgres:13-alpine
+    container_name: filevault-db
+    tty: true
+    environment:
+      - POSTGRES_DB=docker
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.pgdata:/var/lib/postgresql/data
+    ports:
+      - ${DB_FORWARD_PORT:-5432}:5432
